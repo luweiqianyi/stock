@@ -1,0 +1,1 @@
+goctl api go --api transaction.api --dir .
