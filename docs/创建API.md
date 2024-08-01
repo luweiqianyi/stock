@@ -107,7 +107,7 @@ post /addOneTransactionRecord (AddOneTransactionRecordReq) returns (AddOneTransa
 post /listAllTransactionRecords (ListAllTransactionRecordsReq) returns (ListAllTransactionRecordsResp)
 }
 ```
-## 执行命令自动生成模板代码
+## 使用goctl执行命令自动生成模板代码
 ```sh
 goctl api go --api transaction.api --dir .
 ```

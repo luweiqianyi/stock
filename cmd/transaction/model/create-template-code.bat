@@ -1,0 +1,1 @@
+goctl model mysql ddl --src transaction.sql --dir .
