@@ -10,9 +10,10 @@ import (
 )
 
 const (
-	url = "root:12345678@tcp(127.0.0.1:3306)/stock?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
+	url = "root:123456@tcp(127.0.0.1:3306)/stock?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
 )
 
+// 插入一条记录
 func TestTransactionModelInsert(t *testing.T) {
 	ctx := context.Background()
 	tModel := NewTransactionModel(sqlx.NewMysql(url))
@@ -48,9 +49,51 @@ func TestTransactionModelInsert(t *testing.T) {
 		return
 	}
 
-	fmt.Printf("result: %v\n", result)
+	fmt.Printf("result: %#v\n", result)
 }
 
-func TestTransactionModelDelete(t *testing.T) {
+// 查找已存在的记录
+func TestTransactionModelQuery(t *testing.T) {
+	ctx := context.Background()
+	tModel := NewTransactionModel(sqlx.NewMysql(url))
 
+	result, err := tModel.FindOne(ctx, 1)
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+		return
+	}
+
+	fmt.Printf("result: %#v\n", result)
+}
+
+// 查找不存在的记录
+func TestTransactionModelQueryNotExist(t *testing.T) {
+	ctx := context.Background()
+	tModel := NewTransactionModel(sqlx.NewMysql(url))
+
+	result, err := tModel.FindOne(ctx, 2)
+	if err != nil {
+		fmt.Printf("error: %v\n", err)
+		return
+	}
+
+	fmt.Printf("result: %#v\n", result)
+}
+
+// 删除已存在的记录
+func TestTransactionModelDelete(t *testing.T) {
+	ctx := context.Background()
+	tModel := NewTransactionModel(sqlx.NewMysql(url))
+
+	err := tModel.Delete(ctx, 1)
+	fmt.Printf("error: %v\n", err)
+}
+
+// 删除不存在的记录
+func TestTransactionModelDeleteNotExist(t *testing.T) {
+	ctx := context.Background()
+	tModel := NewTransactionModel(sqlx.NewMysql(url))
+
+	err := tModel.Delete(ctx, 2)
+	fmt.Printf("error: %v\n", err)
 }
