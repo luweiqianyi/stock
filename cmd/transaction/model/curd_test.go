@@ -13,7 +13,7 @@ const (
 	url = "root:123456@tcp(127.0.0.1:3306)/stock?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
 )
 
-// 插入一条记录
+// 插入一条记录 (小心：注意这个接口可以无限插入相同的数据项)
 func TestTransactionModelInsert(t *testing.T) {
 	ctx := context.Background()
 	tModel := NewTransactionModel(sqlx.NewMysql(url))
