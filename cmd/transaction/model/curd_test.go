@@ -2,7 +2,6 @@ package model
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"testing"
@@ -19,30 +18,12 @@ func TestTransactionModelInsert(t *testing.T) {
 	tModel := NewTransactionModel(sqlx.NewMysql(url))
 	result, err := tModel.Insert(ctx, &Transaction{
 		StockCode: "600250",
-		StockName: sql.NullString{
-			String: "南京商旅",
-			Valid:  true,
-		},
-		BuyPrice: sql.NullFloat64{
-			Float64: 8.43,
-			Valid:   true,
-		},
-		SellPrice: sql.NullFloat64{
-			Float64: 9.0,
-			Valid:   true,
-		},
-		Number: sql.NullFloat64{
-			Float64: 14000,
-			Valid:   true,
-		},
-		BuyDate: sql.NullTime{
-			Time:  time.Now(),
-			Valid: true,
-		},
-		SellDate: sql.NullTime{
-			Time:  time.Now(),
-			Valid: true,
-		},
+		StockName: "南京商旅",
+		BuyPrice:  8.43,
+		SellPrice: 9.0,
+		Number:    14000,
+		BuyDate:   time.Now(),
+		SellDate:  time.Now(),
 	})
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
