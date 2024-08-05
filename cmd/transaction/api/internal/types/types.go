@@ -24,7 +24,7 @@ type ListAllTransactionRecordsResp struct {
 
 type ListOneTransactionRecordReq struct {
 	StockCode string `form:"stock_code"` // 股票代码
-	BuyDate   string `form:"buyDate"`    // 买入日期
+	BuyDate   string `form:"buy_date"`   // 买入日期
 }
 
 type ListOneTransactionRecordResp struct {
@@ -38,8 +38,8 @@ type TransactionDetailReq struct {
 	BuyPrice  float64 `form:"buy_price"`  // 买入价格
 	Number    float64 `form:"number"`     // 买入数量
 	SellPrice float64 `form:"sell_price"` // 卖出价格
-	BuyDate   string  `form:"buyDate"`    // 买入日期
-	SellDate  string  `form:"sellDate"`   // 卖出日期
+	BuyDate   string  `form:"buy_date"`   // 买入日期
+	SellDate  string  `form:"sell_date"`  // 卖出日期
 }
 
 type TransactionDetailResp struct {
@@ -48,8 +48,8 @@ type TransactionDetailResp struct {
 	BuyPrice  float64 `json:"buy_price"`  // 买入价格
 	Number    float64 `json:"number"`     // 买入数量
 	SellPrice float64 `json:"sell_price"` // 卖出价格
-	BuyDate   string  `json:"buyDate"`    // 买入日期
-	SellDate  string  `json:"sellDate"`   // 卖出日期
+	BuyDate   string  `json:"buy_date"`   // 买入日期
+	SellDate  string  `json:"sell_date"`  // 卖出日期
 }
 
 type TransactionRecordResult struct {
