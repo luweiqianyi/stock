@@ -7,6 +7,7 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -34,20 +35,20 @@ type (
 	}
 
 	TransactionResult struct {
-		Id          int64           `db:"id"`
-		StockCode   string          `db:"stock_code"`   // stock_code
-		StockName   sql.NullString  `db:"stock_name"`   // stock_name
-		BuyPrice    sql.NullFloat64 `db:"buy_price"`    // buy_price
-		SellPrice   sql.NullFloat64 `db:"sell_price"`   // sell_price
-		Number      sql.NullFloat64 `db:"number"`       // number
-		BuyDate     sql.NullTime    `db:"buy_date"`     // buy_date
-		SellDate    sql.NullTime    `db:"sell_date"`    // sell_date
-		BuyCost     sql.NullFloat64 `db:"buy_cost"`     // buy_cost
-		SellCost    sql.NullFloat64 `db:"sell_cost"`    // sell_cost
-		TotalCost   sql.NullFloat64 `db:"total_cost"`   // total_cost
-		Rate        sql.NullFloat64 `db:"rate"`         // rate
-		GainLoss    sql.NullFloat64 `db:"gain_loss"`    // gain_loss
-		FinalProfit sql.NullFloat64 `db:"final_profit"` // final_profit
+		Id          int64     `db:"id"`
+		StockCode   string    `db:"stock_code"`   // stock_code
+		StockName   string    `db:"stock_name"`   // stock_name
+		BuyPrice    float64   `db:"buy_price"`    // buy_price
+		SellPrice   float64   `db:"sell_price"`   // sell_price
+		Number      float64   `db:"number"`       // number
+		BuyDate     time.Time `db:"buy_date"`     // buy_date
+		SellDate    time.Time `db:"sell_date"`    // sell_date
+		BuyCost     float64   `db:"buy_cost"`     // buy_cost
+		SellCost    float64   `db:"sell_cost"`    // sell_cost
+		TotalCost   float64   `db:"total_cost"`   // total_cost
+		Rate        float64   `db:"rate"`         // rate
+		GainLoss    float64   `db:"gain_loss"`    // gain_loss
+		FinalProfit float64   `db:"final_profit"` // final_profit
 	}
 )
 

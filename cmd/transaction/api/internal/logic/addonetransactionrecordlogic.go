@@ -2,7 +2,6 @@ package logic
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"stock/cmd/common"
 	"stock/cmd/transaction/model"
@@ -55,30 +54,12 @@ func (l *AddOneTransactionRecordLogic) AddOneTransactionRecord(req *types.AddOne
 
 	_, err = l.svcCtx.TransactionModel.Insert(l.ctx, &model.Transaction{
 		StockCode: req.StockCode,
-		StockName: sql.NullString{
-			String: req.StockName,
-			Valid:  true,
-		},
-		BuyPrice: sql.NullFloat64{
-			Float64: req.BuyPrice,
-			Valid:   true,
-		},
-		SellPrice: sql.NullFloat64{
-			Float64: req.SellPrice,
-			Valid:   true,
-		},
-		Number: sql.NullFloat64{
-			Float64: req.Number,
-			Valid:   true,
-		},
-		BuyDate: sql.NullTime{
-			Time:  timeBuyDate,
-			Valid: true,
-		},
-		SellDate: sql.NullTime{
-			Time:  timeSellDate,
-			Valid: true,
-		},
+		StockName: req.StockName,
+		BuyPrice:  req.BuyPrice,
+		SellPrice: req.SellPrice,
+		Number:    req.Number,
+		BuyDate:   timeBuyDate,
+		SellDate:  timeSellDate,
 	})
 
 	if err != nil {
