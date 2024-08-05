@@ -98,3 +98,5 @@ D:.
         svc.tpl
         template.tpl
 ```
+
+本来还想仿照`find-one-by-field.tpl`写一个的，然后发现这个模板真他娘的费劲。弃坑了，擦！`2024-08-05`
