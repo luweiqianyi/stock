@@ -2,6 +2,8 @@ package logic
 
 import (
 	"context"
+	"fmt"
+	"stock/cmd/common"
 
 	"stock/cmd/transaction/api/internal/svc"
 	"stock/cmd/transaction/api/internal/types"
@@ -24,7 +26,26 @@ func NewListAllTransactionRecordsLogic(ctx context.Context, svcCtx *svc.ServiceC
 }
 
 func (l *ListAllTransactionRecordsLogic) ListAllTransactionRecords(req *types.ListAllTransactionRecordsReq) (resp *types.ListAllTransactionRecordsResp, err error) {
-	// todo: add your logic here and delete this line
+	sql := fmt.Sprintf("select * from transaction_result")
+	var results []types.TransactionRecordResult
+	tx := l.svcCtx.DB.Raw(sql).Scan(&results)
+	if tx.Error != nil {
+		resp = &types.ListAllTransactionRecordsResp{
+			CommonResp: types.CommonResp{
+				Result:  common.FAILED,
+				Message: fmt.Sprintf("error: %v", tx.Error),
+			},
+			TransactionResults: []types.TransactionRecordResult{},
+		}
+		return
+	}
+
+	resp = &types.ListAllTransactionRecordsResp{
+		CommonResp: types.CommonResp{
+			Result: common.SUCCESS,
+		},
+		TransactionResults: results,
+	}
 
 	return
 }
