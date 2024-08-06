@@ -16,7 +16,7 @@ import (
 // var configFile = flag.String("f", "etc/transactionapi.yaml", "the config file")
 
 // Windows(需要修改成绝对路径可执行文件才能正确加载transactionapi.yaml配置文件)
-var configFile = flag.String("f", "D:\\YINC_DEVELOPMENT\\go\\stock\\cmd\\transaction\\api\\etc\\transactionapi.yaml", "the config file")
+var configFile = flag.String("f", "D:\\Code\\2024\\stock\\cmd\\market\\api\\etc\\transactionapi.yaml", "the config file")
 
 func main() {
 	flag.Parse()

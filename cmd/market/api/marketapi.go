@@ -11,7 +11,7 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "D:\\YINC_DEVELOPMENT\\go\\stock\\cmd\\market\\api\\etc\\marketapi.yaml", "the config file")
+var configFile = flag.String("f", "D:\\Code\\2024\\stock\\cmd\\market\\api\\etc\\marketapi.yaml", "the config file")
 
 func main() {
 	flag.Parse()

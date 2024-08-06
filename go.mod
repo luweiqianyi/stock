@@ -2,7 +2,11 @@ module stock
 
 go 1.22.1
 
-require github.com/zeromicro/go-zero v1.7.0
+require (
+	github.com/zeromicro/go-zero v1.7.0
+	gorm.io/driver/mysql v1.5.7
+	gorm.io/gorm v1.25.11
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
@@ -47,6 +51,4 @@ require (
 	google.golang.org/grpc v1.65.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gorm.io/driver/mysql v1.5.7 // indirect
-	gorm.io/gorm v1.25.11 // indirect
 )
