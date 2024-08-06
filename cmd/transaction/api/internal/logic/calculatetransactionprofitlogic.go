@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"fmt"
 	"stock/cmd/common"
 	"stock/pkg/fee"
 
@@ -57,6 +58,35 @@ func (l *CalculateTransactionProfitLogic) CalculateTransactionProfit(req *types.
 			FinalProfit: tr.FinalProfit(),
 		},
 	}
+
+	tx := l.svcCtx.DB.Exec("insert into transaction_result(`stock_code`,`stock_name`,`market`,`buy_price`,`number`,`sell_price`,`buy_date`,`sell_date`,`buy_cost`,`sell_cost`,`total_cost`,`rate`,`gain_loss`,`final_profit`)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+		req.StockCode,
+		req.StockName,
+		req.MarketType,
+		req.BuyPrice,
+		req.Number,
+		req.SellPrice,
+		req.BuyDate,
+		req.SellDate,
+		tr.BuyFee(),
+		tr.SellFee(),
+		tr.TotalFee(),
+		tr.Ratio(),
+		tr.ProfitAndLoss(),
+		tr.FinalProfit(),
+	)
+	if tx.Error != nil {
+		// 重复计算的话也返回计算结果，但是如果插入数据库失败，告知接口请求方失败原因
+		resp = &types.CalculateTransactionProfitResp{
+			CommonResp: types.CommonResp{
+				Result:  common.FAILED,
+				Message: fmt.Sprintf("error: %v", tx.Error),
+			},
+			TransactionRecordResult: transactionResult,
+		}
+		return
+	}
+
 	resp = &types.CalculateTransactionProfitResp{
 		CommonResp: types.CommonResp{
 			Result: common.SUCCESS,
