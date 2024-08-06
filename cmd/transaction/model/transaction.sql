@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS transaction(
     number FLOAT NOT NULL DEFAULT 0.0 COMMENT 'number',
     buy_date DATETIME NOT NULL COMMENT 'buy_date',
     sell_date DATETIME NOT NULL COMMENT 'sell_date',
-    PRIMARY KEY (id)    # goctl的主键写法不支持在id列的定义后面写
+    PRIMARY KEY (id),    # goctl的主键写法不支持在id列的定义后面写
+    UNIQUE KEY `unique_stock_buy_date` (`stock_code`, `buy_date`)
 )ENGINE = InnoDB COLLATE utf8mb4_general_ci COMMENT 'transaction table';
 
 CREATE TABLE IF NOT EXISTS transaction_result(
@@ -30,5 +31,6 @@ CREATE TABLE IF NOT EXISTS transaction_result(
     rate FLOAT NOT NULL DEFAULT 0.0 COMMENT 'rate',
     gain_loss FLOAT NOT NULL DEFAULT 0.0 COMMENT 'gain_loss',
     final_profit FLOAT NOT NULL DEFAULT 0.0 COMMENT 'final_profit',
-    PRIMARY KEY (id)    # goctl的主键写法不支持在id列的定义后面写
+    PRIMARY KEY (id),    # goctl的主键写法不支持在id列的定义后面写
+    UNIQUE KEY `unique_stock_buy_date` (`stock_code`, `buy_date`)
 )ENGINE = InnoDB COLLATE utf8mb4_general_ci COMMENT 'transaction_result table';
