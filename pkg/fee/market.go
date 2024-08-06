@@ -1,9 +1,9 @@
 package fee
 
-type Market int
+type Market string
 
 const (
-	SZ Market = iota // 深证证券交易所
-	SH               // 上海证券交易所
-	BJ               // 背景证券交易所
+	SZ Market = "Shenzhen" // 深证证券交易所
+	SH Market = "Shanghai" // 上海证券交易所
+	BJ Market = "Beijing"  // 背景证券交易所
 )

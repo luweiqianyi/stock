@@ -51,9 +51,10 @@ func (l *AddOneTransactionRecordLogic) AddOneTransactionRecord(req *types.AddOne
 		}, err
 	}
 
-	tx := l.svcCtx.DB.Exec("insert into transaction(`stock_code`,`stock_name`,`buy_price`,`sell_price`,`number`,`buy_date`,`sell_date`)values(?,?,?,?,?,?,?)",
+	tx := l.svcCtx.DB.Exec("insert into transaction(`stock_code`,`stock_name`,`market`,`buy_price`,`sell_price`,`number`,`buy_date`,`sell_date`)values(?,?,?,?,?,?,?,?)",
 		req.StockCode,
 		req.StockName,
+		req.MarketType,
 		req.BuyPrice,
 		req.SellPrice,
 		req.Number,
@@ -65,7 +66,7 @@ func (l *AddOneTransactionRecordLogic) AddOneTransactionRecord(req *types.AddOne
 		return &types.AddOneTransactionRecordResp{
 			CommonResp: types.CommonResp{
 				Result:  common.FAILED,
-				Message: fmt.Sprintf("%v", err),
+				Message: fmt.Sprintf("%v", tx.Error),
 			},
 		}, err
 	}

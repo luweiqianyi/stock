@@ -19,6 +19,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
+				Path:    "/calculateTransactionProfit",
+				Handler: CalculateTransactionProfitHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
 				Path:    "/listAllTransactionRecords",
 				Handler: ListAllTransactionRecordsHandler(serverCtx),
 			},
