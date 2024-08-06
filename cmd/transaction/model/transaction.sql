@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS transaction(
     buy_price FLOAT NOT NULL DEFAULT 0.0 COMMENT 'buy_price',
     sell_price FLOAT NOT NULL DEFAULT 0.0 COMMENT 'sell_price',
     number FLOAT NOT NULL DEFAULT 0.0 COMMENT 'number',
-    buy_date DATE NOT NULL COMMENT 'buy_date',
-    sell_date DATE NOT NULL COMMENT 'sell_date',
+    buy_date DATETIME NOT NULL COMMENT 'buy_date',
+    sell_date DATETIME NOT NULL COMMENT 'sell_date',
     PRIMARY KEY (id)    # goctl的主键写法不支持在id列的定义后面写
 )ENGINE = InnoDB COLLATE utf8mb4_general_ci COMMENT 'transaction table';
 
@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS transaction_result(
     buy_price FLOAT NOT NULL DEFAULT 0.0 COMMENT 'buy_price',
     sell_price FLOAT NOT NULL DEFAULT 0.0 COMMENT 'sell_price',
     number FLOAT NOT NULL DEFAULT 0.0 COMMENT 'number',
-    buy_date DATE NOT NULL COMMENT 'buy_date',
-    sell_date DATE NOT NULL COMMENT 'sell_date',
+    buy_date DATETIME NOT NULL COMMENT 'buy_date',
+    sell_date DATETIME NOT NULL COMMENT 'sell_date',
 
     buy_cost FLOAT NOT NULL DEFAULT 0.0 COMMENT 'buy_cost',
     sell_cost FLOAT NOT NULL DEFAULT 0.0 COMMENT 'sell_cost',
