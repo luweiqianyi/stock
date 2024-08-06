@@ -1,0 +1,40 @@
+syntax = "v1"
+
+info (
+	title:   "market"
+	desc:    "get market type"
+	author:  "luweiqianyi"
+	email:   "runningriven@gmail.com"
+	version: "1.0.0"
+)
+
+// 通用响应
+type CommonResp {
+	Result  int    `json:"result"`
+	Message string `json:"message,omitempty"` // omitempty: allow to omit
+}
+
+type (
+	// 增加券商交易所类型
+	AddMarketTypeReq {
+		MarketType string `form:"market_type"`
+	}
+	AddMarketTypeResp {
+		CommonResp
+	}
+	// 获取券商交易所类型
+	ListMarketTypeReq  {}
+	ListMarketTypeResp {
+		CommonResp
+		MarketType []string `json:"market_type"`
+	}
+)
+
+service MarketApi {
+	@handler AddMarketTypeHandler
+	post /addMarketType (AddMarketTypeReq) returns (AddMarketTypeResp)
+
+	@handler ListMarketTypeHandler
+	post /listMarketType (ListMarketTypeReq) returns (ListMarketTypeResp)
+}
+
