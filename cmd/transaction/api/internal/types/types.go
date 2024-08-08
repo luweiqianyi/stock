@@ -15,7 +15,7 @@ type CalculateTransactionProfitReq struct {
 
 type CalculateTransactionProfitResp struct {
 	CommonResp
-	TransactionRecordResult
+	TransactionRecordResult TransactionRecordResult `json:"data"`
 }
 
 type CommonResp struct {
@@ -28,7 +28,7 @@ type ListAllTransactionRecordsReq struct {
 
 type ListAllTransactionRecordsResp struct {
 	CommonResp
-	TransactionResults []TransactionRecordResult `json:"transaction_results"`
+	TransactionResults []TransactionRecordResult `json:"data"`
 }
 
 type ListOneTransactionRecordReq struct {
@@ -38,7 +38,7 @@ type ListOneTransactionRecordReq struct {
 
 type ListOneTransactionRecordResp struct {
 	CommonResp
-	TransactionResults []TransactionRecordResult `json:"transaction_results"`
+	TransactionResults []TransactionRecordResult `json:"data"`
 }
 
 type TransactionDetailReq struct {
