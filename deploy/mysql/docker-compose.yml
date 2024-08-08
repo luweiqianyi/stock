@@ -14,3 +14,4 @@ services:
       - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
+      - ./config/my.cnf:/etc/my.cnf
