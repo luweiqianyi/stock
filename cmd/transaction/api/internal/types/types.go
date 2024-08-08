@@ -42,25 +42,25 @@ type ListOneTransactionRecordResp struct {
 }
 
 type TransactionDetailReq struct {
-	StockCode  string  `form:"stock_code"` // 股票代码
-	StockName  string  `form:"stock_name"` // 股票名称
-	MarketType string  `form:"market"`     // 交易所类型
-	BuyPrice   float64 `form:"buy_price"`  // 买入价格
-	Number     float64 `form:"number"`     // 买入数量
-	SellPrice  float64 `form:"sell_price"` // 卖出价格
-	BuyDate    string  `form:"buy_date"`   // 买入日期
-	SellDate   string  `form:"sell_date"`  // 卖出日期
+	StockCode string  `form:"stock_code"` // 股票代码
+	StockName string  `form:"stock_name"` // 股票名称
+	Market    string  `form:"market"`     // 交易所类型
+	BuyPrice  float64 `form:"buy_price"`  // 买入价格
+	Number    float64 `form:"number"`     // 买入数量
+	SellPrice float64 `form:"sell_price"` // 卖出价格
+	BuyDate   string  `form:"buy_date"`   // 买入日期
+	SellDate  string  `form:"sell_date"`  // 卖出日期
 }
 
 type TransactionDetailResp struct {
-	StockCode  string  `json:"stock_code"` // 股票代码
-	StockName  string  `json:"stock_name"` // 股票名称
-	MarketType string  `json:"market"`     // 交易所类型
-	BuyPrice   float64 `json:"buy_price"`  // 买入价格
-	Number     float64 `json:"number"`     // 买入数量
-	SellPrice  float64 `json:"sell_price"` // 卖出价格
-	BuyDate    string  `json:"buy_date"`   // 买入日期
-	SellDate   string  `json:"sell_date"`  // 卖出日期
+	StockCode string  `json:"stock_code"` // 股票代码
+	StockName string  `json:"stock_name"` // 股票名称
+	Market    string  `json:"market"`     // 交易所类型
+	BuyPrice  float64 `json:"buy_price"`  // 买入价格
+	Number    float64 `json:"number"`     // 买入数量
+	SellPrice float64 `json:"sell_price"` // 卖出价格
+	BuyDate   string  `json:"buy_date"`   // 买入日期
+	SellDate  string  `json:"sell_date"`  // 卖出日期
 }
 
 type TransactionRecordResult struct {

@@ -28,7 +28,8 @@ func NewListAllTransactionRecordsLogic(ctx context.Context, svcCtx *svc.ServiceC
 func (l *ListAllTransactionRecordsLogic) ListAllTransactionRecords(req *types.ListAllTransactionRecordsReq) (resp *types.ListAllTransactionRecordsResp, err error) {
 	sql := fmt.Sprintf("select * from transaction_result")
 	var results []types.TransactionRecordResult
-	tx := l.svcCtx.DB.Raw(sql).Scan(&results)
+	tx := l.svcCtx.DB.Raw(sql)
+	tx = tx.Scan(&results)
 	if tx.Error != nil {
 		resp = &types.ListAllTransactionRecordsResp{
 			CommonResp: types.CommonResp{

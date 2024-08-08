@@ -31,7 +31,7 @@ func (l *CalculateTransactionProfitLogic) CalculateTransactionProfit(req *types.
 		Entry: fee.StockEntry{
 			Code:   req.StockCode,
 			Name:   req.StockName,
-			Market: fee.Market(req.MarketType),
+			Market: fee.Market(req.Market),
 		},
 		BuyPrice:  req.BuyPrice,
 		SellPrice: req.SellPrice,
@@ -40,14 +40,14 @@ func (l *CalculateTransactionProfitLogic) CalculateTransactionProfit(req *types.
 
 	transactionResult := types.TransactionRecordResult{
 		TransactionDetailResp: types.TransactionDetailResp{
-			StockCode:  req.StockCode,
-			StockName:  req.StockName,
-			MarketType: req.MarketType,
-			BuyPrice:   req.BuyPrice,
-			Number:     req.Number,
-			SellPrice:  req.SellPrice,
-			BuyDate:    req.BuyDate,
-			SellDate:   req.SellDate,
+			StockCode: req.StockCode,
+			StockName: req.StockName,
+			Market:    req.Market,
+			BuyPrice:  req.BuyPrice,
+			Number:    req.Number,
+			SellPrice: req.SellPrice,
+			BuyDate:   req.BuyDate,
+			SellDate:  req.SellDate,
 		},
 		TransactionResultResp: types.TransactionResultResp{
 			BuyCost:     tr.BuyFee(),
@@ -62,7 +62,7 @@ func (l *CalculateTransactionProfitLogic) CalculateTransactionProfit(req *types.
 	tx := l.svcCtx.DB.Exec("insert into transaction_result(`stock_code`,`stock_name`,`market`,`buy_price`,`number`,`sell_price`,`buy_date`,`sell_date`,`buy_cost`,`sell_cost`,`total_cost`,`rate`,`gain_loss`,`final_profit`)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 		req.StockCode,
 		req.StockName,
-		req.MarketType,
+		req.Market,
 		req.BuyPrice,
 		req.Number,
 		req.SellPrice,

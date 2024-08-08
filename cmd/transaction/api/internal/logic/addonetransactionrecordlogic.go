@@ -54,7 +54,7 @@ func (l *AddOneTransactionRecordLogic) AddOneTransactionRecord(req *types.AddOne
 	tx := l.svcCtx.DB.Exec("insert into transaction(`stock_code`,`stock_name`,`market`,`buy_price`,`sell_price`,`number`,`buy_date`,`sell_date`)values(?,?,?,?,?,?,?,?)",
 		req.StockCode,
 		req.StockName,
-		req.MarketType,
+		req.Market,
 		req.BuyPrice,
 		req.SellPrice,
 		req.Number,
