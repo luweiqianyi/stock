@@ -9,6 +9,27 @@ type AddOneTransactionRecordResp struct {
 	CommonResp
 }
 
+type CalExpectedReturnsData struct {
+	Market           string  `json:market`              // 证券交易所
+	BuyPrice         float64 `json:"buy_price"`         // 买入价格
+	SellPrice        float64 `json:"sell_price"`        // 卖出价格
+	Number           float64 `json:"number"`            // 可以买入的股数
+	InvestedCaptical float64 `json:"invested_captical"` // 投入本金
+	Profit           float64 `json:"profit"`            // 最终收益
+}
+
+type CalExpectedReturnsReq struct {
+	Market    string  `form:market`       // 证券交易所
+	BuyPrice  float64 `form:"buy_price"`  // 买入价格
+	SellPrice float64 `form:"sell_price"` // 卖出价格
+	Balance   float64 `form:"balance"`    // 账户结余，用来计算可买入股数
+}
+
+type CalExpectedReturnsResp struct {
+	CommonResp
+	Data CalExpectedReturnsData `json:"data"`
+}
+
 type CalculateTransactionProfitReq struct {
 	TransactionDetailReq
 }
