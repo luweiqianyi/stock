@@ -13,8 +13,12 @@ type CalExpectedReturnsData struct {
 	Market           string  `json:"market"`            // 证券交易所
 	BuyPrice         float64 `json:"buy_price"`         // 买入价格
 	SellPrice        float64 `json:"sell_price"`        // 卖出价格
+	Rate             float64 `json:"rate"`              // 股价变化率
 	Number           float64 `json:"number"`            // 可以买入的股数
 	InvestedCaptical float64 `json:"invested_captical"` // 投入本金
+	BuyCost          float64 `json:"buy_cost"`          // 买入费用
+	SellCost         float64 `json:"sell_cost"`         // 卖出费用
+	TotalCost        float64 `json:"total_cost"`        // 总费用
 	Profit           float64 `json:"profit"`            // 最终收益
 }
 

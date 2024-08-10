@@ -45,8 +45,12 @@ func (l *CalExpectedReturnsLogic) CalExpectedReturns(req *types.CalExpectedRetur
 			Market:           req.Market,
 			BuyPrice:         req.BuyPrice,
 			SellPrice:        req.SellPrice,
+			Rate:             tr.Ratio(),
 			Number:           number,
 			InvestedCaptical: tr.Cost(),
+			BuyCost:          tr.BuyFee(),
+			SellCost:         tr.SellFee(),
+			TotalCost:        tr.TotalFee(),
 			Profit:           tr.FinalProfit(),
 		},
 	}
