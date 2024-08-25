@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"runtime"
 	"stock/cmd/market/api/internal/config"
 	"stock/cmd/market/api/internal/handler"
 	"stock/cmd/market/api/internal/svc"
@@ -11,7 +12,19 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "D:\\Code\\2024\\stock\\cmd\\market\\api\\etc\\marketapi.yaml", "the config file")
+var configFile *string
+
+func init() {
+	var filePath string
+	switch runtime.GOOS {
+	case "windows":
+		filePath = "D:\\Code\\2024\\stock\\cmd\\market\\api\\etc\\marketapi.yaml"
+	case "linux":
+		filePath = "/etc/stock/marketapi.yaml"
+	}
+
+	configFile = flag.String("f", filePath, "the config file")
+}
 
 func main() {
 	flag.Parse()

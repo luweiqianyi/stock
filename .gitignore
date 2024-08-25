@@ -1,2 +1,4 @@
 .idea
 /deploy/mysql/data/
+/cmd/transaction/api/transactionapi.exe
+/cmd/market/api/marketapi.exe

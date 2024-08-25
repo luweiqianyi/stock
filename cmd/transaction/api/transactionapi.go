@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"runtime"
 
 	"stock/cmd/transaction/api/internal/config"
 	"stock/cmd/transaction/api/internal/handler"
@@ -12,11 +13,19 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-// Linux(代码模板生成的配置)
-// var configFile = flag.String("f", "etc/transactionapi.yaml", "the config file")
+var configFile *string
 
-// Windows(需要修改成绝对路径可执行文件才能正确加载transactionapi.yaml配置文件)
-var configFile = flag.String("f", "D:\\Code\\2024\\stock\\cmd\\transaction\\api\\etc\\transactionapi.yaml", "the config file")
+func init() {
+	var filePath string
+	switch runtime.GOOS {
+	case "windows":
+		filePath = "D:\\Code\\2024\\stock\\cmd\\transaction\\api\\etc\\transactionapi.yaml"
+	case "linux":
+		filePath = "/etc/stock/transactionapi.yaml"
+	}
+
+	configFile = flag.String("f", filePath, "the config file")
+}
 
 func main() {
 	flag.Parse()
