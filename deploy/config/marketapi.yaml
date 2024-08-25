@@ -1,0 +1,6 @@
+Name: MarketApi
+Host: 0.0.0.0
+Port: 8887
+
+Mysql:
+  DataSource: root:123456@tcp(mysql:3306)/stock?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
